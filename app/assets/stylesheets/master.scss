@@ -102,3 +102,32 @@ body    {
   .clear  {
     clear: both;
   }
+
+  blockquote {
+    background: #ffffff;
+    border-left: 10px solid rgb(212, 149, 31);
+    margin: 0.75em;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    box-shadow: 2px 2px 3px 0 #d0d0d0;
+    border-radius: 7px;
+    margin-left: 3.5em;
+    margin-right: 3.5em;
+  }
+  blockquote:before {
+    color: rgb(212, 149, 31);
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  blockquote p {
+    display: inline;
+  }
+
+  blockquote:hover  {
+    box-shadow: 2px 2px 3px 0 #8d8d8d;
+    border-radius: 15px;
+    transition: box-shadow 0.7s;
+  }
