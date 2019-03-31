@@ -49,6 +49,8 @@
 
 <div class="clear"></div>
 
+
+<!-- Showing the comments -->
 <div class="row">
     <% @place.comments.each do |comment| %>
         <div class="col-12 col-sm-6">
@@ -63,7 +65,18 @@
     <% end %>
 </div>
 
-<!-- Modal -->
+<!-- Showing users pictures -->
+<div class="row">
+    <% @place.photo.each do |photo| %>
+        <div class="col-10">
+            <%= photo.picture %>
+            <%= photo.caption %>
+        </div>
+    <% end %>
+</div>    
+
+
+<!-- Modal / Adding Comment -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -74,19 +87,18 @@
                 <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
             </div>
             <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-            <div class="modal-body">
-                <%= f.input :message %>
-                <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-            </div>
+                <div class="modal-body">
+                    <%= f.input :message %>
+                    <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+                </div>
             <% end %>
         </div>
     </div>
 </div>
-
 
 <div class="col-10 offset-1">
     <!-- Button trigger modal -->
@@ -94,5 +106,15 @@
         Add a comment
     </button>
 </div>
+
+<div class="clear"></div>
+<br />
+
+
+<!-- Adding Picture -->
+<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+    <%= f.input :caption %>
+    <%= f.submit "Upload Photo", class: 'btn btn-primary' %>
+<% end %>
 
 <div class="clear"></div>
