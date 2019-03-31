@@ -65,15 +65,6 @@
     <% end %>
 </div>
 
-<!-- Showing users pictures -->
-<div class="row">
-    <% @place.photo.each do |photo| %>
-        <div class="col-10">
-            <%= photo.picture %>
-            <%= photo.caption %>
-        </div>
-    <% end %>
-</div>    
 
 
 <!-- Modal / Adding Comment -->
@@ -111,10 +102,4 @@
 <br />
 
 
-<!-- Adding Picture -->
-<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-    <%= f.input :caption %>
-    <%= f.submit "Upload Photo", class: 'btn btn-primary' %>
-<% end %>
 
-<div class="clear"></div>
