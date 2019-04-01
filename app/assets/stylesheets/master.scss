@@ -131,3 +131,22 @@ body    {
     border-radius: 10px;
     transition: box-shadow 0.7s;
   }
+
+  img {
+    width: 90%;
+    height: auto;
+    margin: 0.5em;
+    border-radius: 3.5%;
+    padding: 0.5em;
+  }
+
+  .photo-show {
+    box-shadow: 2px 2px 3px 0 #8d8d8d;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
