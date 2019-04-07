@@ -1,3 +1,4 @@
+<!-- Showing the user statistics -->
 <div class="booyah-box">
     <div class="row">
         <div class="col-4">
@@ -5,8 +6,9 @@
         </div>
 
         <div class="col-8">
+            <br /><br />
             <h1>User Dashboard</h1>
-            <h1><%= @user.email %></h1>
+            <h3><%= @user.email %></h3>
             <h3>Member since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
             <h4><%= @user.comments.count %> total comments made.</h4>
             <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 stars reviews made.</h4>
@@ -15,8 +17,9 @@
     <div class="clear"></div>
 </div>
 
+<!-- Listing all comments user made -->
 <br /><br />
-<h1 class="text-center">My Comments</h1>
+<h1 class="text-center">Comments I Made</h1>
 <br /><br />
 <div class="row">
     <% @user.comments.each do |comment| %>
@@ -32,3 +35,35 @@
         </div>
     <% end %>
 </div>
+
+<br /><br />
+<div class="clear"></div>
+
+<!-- Listing all the places user created -->
+
+<h1 class="text-center">Places I Created</h1>
+<br /><br />
+
+<% @user.places.each do |place| %>
+    <div class="booyah-box col-10 offset-1">
+      <h1><%= link_to place.name, place_path(place) %></h1><br />
+      <i><%= place.address %></i><br />
+      <p><%= place.description %></p><br />
+  
+      <% if place.user.present? %>
+        <small><%= place.user.email %></small>
+      <% end %>
+  
+      <% if place.comments.present? %>
+        <div class="col-12">
+          <blockquote>
+            <% if place.comments.last.humanized_rating.present? %>
+              <b><%= place.comments.last.humanized_rating %></b> -
+            <% end %>
+            <%= place.comments.last.message %>
+            <small><%= place.comments.last.user.email %></small>
+          </blockquote>
+        </div>
+      <% end %>
+    </div>
+<% end %>
