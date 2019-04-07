@@ -44,6 +44,7 @@
 
     <div class="clear"></div>
 
+    <!-- Showing comments -->
     <div class="row booyah-box">
         <h1 class="col-12 offset-1 float-left">Comments</h1>
         <br />
@@ -61,12 +62,12 @@
     </div>
 
     <!-- Showing uploaded photos -->
-    <div class="booyah-box row">
+    <div class="row booyah-box">
         <% @place.photos.each do |photo| %>
-            <div>
-                <img src="<%= photo.picture %>", class="photo-show col-12 col-sm-6">
+            <div class="col-12 col-sm-6">
+                <img src="<%= photo.picture %>", class="photo-show">
                 </br />
-                <h4 class="center"><%= photo.caption %></h4>
+                <h5 class="center"><%= photo.caption %></h5>
             </div>
         <% end %>
     </div>
