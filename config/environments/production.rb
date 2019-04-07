@@ -10,7 +10,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  # config.action_mailer.default_url_options = { host: 'sayoub-samy-ayoub.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'sayoub-samy-ayoub.herokuapp.com' }
   
   # Settings specified here will take precedence over those in config/application.rb.
 
